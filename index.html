@@ -1,0 +1,37 @@
+<script>
+    function secureAndGreet() {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        const isMobile = /android|iphone|ipad|ipod/i.test(userAgent);
+        const isPiBrowser = userAgent.includes("PiBrowser");
+
+        // 1. حماية: منع الدخول من الكمبيوتر
+        if (!isMobile) {
+            document.body.innerHTML = `
+                <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; background:#1a237e; color:white; text-align:center; padding:20px; font-family:sans-serif;">
+                    <h1 style="font-size:60px;">🚫</h1>
+                    <h2>تطبيق BM Services مخصص للموبايل فقط</h2>
+                    <p>عفواً يا بطل، لا يمكن فتح "دستور التطبيق" من جهاز الكمبيوتر لضمان الأمان.</p>
+                </div>`;
+            window.stop();
+            return;
+        }
+
+        // 2. تنبيه: ضرورة استخدام متصفح Pi
+        if (!isPiBrowser) {
+            alert("تنبيه هام: لضمان عمل خدمات دفع الـ 3.14 Pi والوصول لروابط الوزارات، يرجى فتح الرابط من داخل تطبيق Pi Browser فقط.");
+            // يمكنك توجيهه للرابط الخاص بك
+            // window.location.href = "https://bmservices9567.pinet.com";
+        }
+
+        // 3. رسالة الترحيب الرمضانية عند الدخول
+        if (isMobile) {
+            setTimeout(() => {
+                alert("🌙 رمضان كريم! \n\n يرحب تطبيق BM Services بكل الزائرين ورواد جيش Pi Network. \n كل عام وأنتم بخير بمناسبة الشهر المبارك.");
+            }, 1000);
+        }
+    }
+
+    // تشغيل الكود الذكي فوراً
+    secureAndGreet();
+</script>
+
