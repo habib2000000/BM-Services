@@ -3,79 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BM Services - بوابة رمضان الرقمية</title>
+    <title>BM Manager Market - بوابة الخدمات</title>
     <style>
-        :root { --primary-blue: #1a237e; --pi-gold: #ffa000; --ramadan-gold: #ffd700; }
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; text-align: center; }
-        
-        /* الهيدر الرمضاني مع الفوانيس الراقصة */
-        .ramadan-header {
-            background: linear-gradient(135deg, var(--primary-blue), #283593);
+        :root {
+            --bg-purple: #311b92; /* لون الخلفية الملكي من الصورة */
+            --gold-btn: #ffc107; /* اللون الأصفر للزر */
+            --glass-bg: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            margin: 0; padding: 0;
+            background: var(--bg-purple);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
             color: white;
-            padding: 30px 20px;
-            position: relative;
+            display: flex; flex-direction: column; align-items: center; min-height: 100vh;
         }
-        .lantern {
-            font-size: 35px;
-            display: inline-block;
-            animation: swing 3s infinite ease-in-out;
-            transform-origin: top;
-            margin: 0 15px;
-        }
+        /* زينة رمضان المتحركة */
+        .lanterns-top { display: flex; justify-content: center; gap: 30px; margin-top: 50px; }
+        .lantern { font-size: 40px; animation: swing 3s infinite ease-in-out; transform-origin: top; }
         @keyframes swing { 0%, 100% { transform: rotate(-15deg); } 50% { transform: rotate(15deg); } }
-        
-        /* الهلال النابض */
-        .moon { font-size: 40px; animation: pulse 2s infinite; display: block; margin-top: 10px; }
-        @keyframes pulse { 0% { opacity: 0.7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.1); } 100% { opacity: 0.7; transform: scale(1); } }
 
-        .card { background: white; margin: 15px; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .btn-pi { background: var(--pi-gold); color: white; border: none; padding: 12px; border-radius: 25px; width: 100%; font-weight: bold; cursor: pointer; text-decoration: none; display: block; }
+        /* البطاقة المركزية (مثل واجهة الماركت) */
+        .market-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px 20px;
+            width: 85%; max-width: 400px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        .title { font-size: 22px; font-weight: bold; margin: 20px 0; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .subtitle { font-size: 14px; opacity: 0.8; margin-bottom: 30px; }
+
+        /* الزر التفاعلي */
+        .start-btn {
+            background: var(--gold-btn);
+            color: #311b92;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            text-decoration: none; display: inline-block;
+            transition: transform 0.3s;
+        }
+        .start-btn:active { transform: scale(0.95); }
+
+        /* الحماية من الكمبيوتر */
+        #desktop-block { display: none; position: fixed; inset: 0; background: var(--bg-purple); z-index: 9999; justify-content: center; align-items: center; text-align: center; padding: 20px; }
     </style>
 </head>
 <body>
 
-    <header class="ramadan-header">
-        <div class="lantern">🏮</div>
-        <span class="moon">🌙</span>
-        <h1>BM Services</h1>
-        <p>كل عام وحضراتكم بخير بمناسبة شهر رمضان المبارك 🌙✨</p>
-        <div class="lantern">🏮</div>
-    </header>
+    <div id="desktop-block">
+        <h2>🚫 عذراً يا بطل!</h2>
+        <p>تطبيق BM Services متاح فقط عبر الموبايل لحماية خصوصية رواد Pi.</p>
+    </div>
 
-    <div class="card">
-        <h4>🎵 استمع لنفحات رمضان</h4>
-        <audio id="ramadan-audio" controls style="width: 100%;">
+    <div class="lanterns-top">
+        <div class="lantern">🏮</div>
+        <div class="lantern">🏮</div>
+    </div>
+
+    <div class="market-card">
+        <div class="title">🌙 بوابة BM Services 🌙</div>
+        <div class="subtitle">استعد لأجواء رمضان 2026 مع رواد شبكة Pi <br> خدمات حكومية | اشتراك 3.14 Pi | أمان تام</div>
+        
+        <button class="start-btn" onclick="openApp()">🎶 ابدأ التجربة واستلم الترحيب 🚀</button>
+        
+        <audio id="ramadan-song" preload="auto">
             <source src="https://habib2000000.github.io/BM-Services/محمد عبد المطلب _ أغنية رمضان جانا.mp3" type="audio/mpeg">
-            متصفحك لا يدعم تشغيل الأغنية.
         </audio>
     </div>
 
-    <div class="card">
-        <h3>باقة الرواد (3.14 Pi)</h3>
-        <p>استمتع بخدمات الوزارات والأرقام الهامة لمدة 30 يوم.</p>
-        <a href="https://bmservices9567.pinet.com" class="btn-pi">دخول التطبيق عبر Pi Browser</a>
-    </div>
+    <footer style="margin-top: auto; padding: 20px; font-size: 11px; opacity: 0.6;">
+        تم التطوير بواسطة habib2000000 | bmservices9567.pinet.com
+    </footer>
 
     <script>
-        function checkAndGreet() {
-            const ua = navigator.userAgent;
-            const isMobile = /Android|iPhone|iPad|iPod/i.test(ua);
-
-            // 1. منع الكمبيوتر وحماية الدستور
+        function checkSecurity() {
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
             if (!isMobile) {
-                document.body.innerHTML = "<h2 style='padding:50px;'>🚫 عذراً.. تطبيق BM Services مخصص للموبايل فقط لضمان الأمان.</h2>";
-                return;
+                document.getElementById('desktop-block').style.display = 'flex';
             }
-
-            // 2. رسالة الترحيب والتهنئة
-            setTimeout(() => {
-                alert("🌙 رمضان كريم! \nيرحب تطبيق BM Services بكل زوارنا الكرام ورواد جيش Pi Network.");
-                // تشغيل الأغنية تلقائياً إذا سمح المتصفح
-                document.getElementById('ramadan-audio').play().catch(() => console.log("التشغيل التلقائي يتطلب تفاعل المستخدم أولاً."));
-            }, 1000);
         }
 
-        window.onload = checkAndGreet;
+        function openApp() {
+            // تشغيل الأغنية الرمضانية
+            const audio = document.getElementById('ramadan-song');
+            audio.play().catch(e => console.log("Audio needs interaction first"));
+
+            // الترحيب الذكي
+            alert("🌙 رمضان كريم! \n تم تفعيل نظام الـ 3.14 Pi بنجاح. \n جاري توجيهك لخدمات مصر الرقمية.");
+            
+            // التوجيه للينك التطبيق الرسمي
+            setTimeout(() => {
+                window.location.href = "https://bmservices9567.pinet.com";
+            }, 2000);
+        }
+
+        window.onload = checkSecurity;
     </script>
 </body>
 </html>
