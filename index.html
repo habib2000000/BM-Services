@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BM Services - الواجهة الاحترافية الشاملة</title>
+    <title>بوابة BM Services - الواجهة الاحترافية</title>
     <style>
         :root {
-            --bg-purple: #1a1a40;
+            --bg-purple: #1a1a40; /* لون BM Manager Market الأصلي */
             --card-purple: #242458;
             --gold: #ffc107;
             --white: #ffffff;
@@ -19,46 +19,52 @@
             display: flex; flex-direction: column; align-items: center; min-height: 100vh;
         }
 
-        /* زينة رمضان */
+        /* زينة رمضان الراقصة */
         .decoration { display: flex; gap: 50px; margin-top: 20px; }
         .lantern { font-size: 50px; animation: swing 3s infinite ease-in-out; transform-origin: top; }
         @keyframes swing { 0%, 100% { transform: rotate(-12deg); } 50% { transform: rotate(12deg); } }
 
-        /* واجهة الكمبيوتر المحترفة */
+        /* واجهة الكمبيوتر والموبايل المحترفة */
         .container {
             background: var(--card-purple);
-            border-radius: 20px;
+            border-radius: 25px;
             padding: 40px;
             width: 85%;
             max-width: 900px;
             text-align: center;
             margin: 30px 0;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
             border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
         }
 
+        /* صندوق الترحيب الرمضاني */
         .welcome-box { 
             background: rgba(255,255,255,0.05); 
-            padding: 20px; 
-            border-radius: 15px; 
-            margin-bottom: 25px; 
-            border-right: 6px solid var(--gold);
+            padding: 25px; 
+            border-radius: 20px; 
+            margin-bottom: 30px; 
+            border-right: 8px solid var(--gold);
             line-height: 1.8;
+            text-align: right;
         }
 
-        /* قسم اللينك الرسمي */
-        .app-link-box {
+        /* إبراز لينك التطبيق */
+        .app-link-container {
             background: linear-gradient(135deg, var(--gold), #ffa000);
-            color: var(--bg-purple);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 25px 0;
-            font-weight: bold;
-        }
-        .app-link-box a {
             color: #000;
+            padding: 25px;
+            border-radius: 20px;
+            margin: 30px 0;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(255, 193, 7, 0.4);
+        }
+        .app-link-container a {
+            color: #1a1a40;
             text-decoration: underline;
-            font-size: 20px;
+            font-size: 22px;
+            display: block;
+            margin-top: 10px;
             word-break: break-all;
         }
 
@@ -66,17 +72,17 @@
             background: var(--gold);
             color: var(--bg-purple);
             border: none;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-size: 18px;
+            padding: 20px 50px;
+            border-radius: 60px;
+            font-size: 20px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(255, 193, 7, 0.4);
-            transition: 0.3s;
+            box-shadow: 0 10px 25px rgba(255, 193, 7, 0.4);
+            transition: 0.3s ease;
         }
         .action-btn:hover { transform: scale(1.05); background: #fff; }
 
-        footer { margin-top: auto; padding: 20px; opacity: 0.7; font-size: 13px; }
+        footer { margin-top: auto; padding: 25px; opacity: 0.7; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -88,36 +94,38 @@
 
     <div class="container">
         <div class="welcome-box">
-            <h2>🌙 رمضان كريم وكل عام وأنتم بخير</h2>
+            <h2 style="color: var(--gold);">🌙 رمضان كريم وكل عام وأنتم بخير</h2>
             <p>يرحب تطبيق <strong>BM Services</strong> بجميع الرواد بمناسبة حلول شهر رمضان المبارك، أعاده الله علينا وعليكم بالخير واليمن والبركات.</p>
         </div>
 
-        <div class="app-link-box">
-            <p>🔗 الرابط الرسمي للتطبيق عبر Pi Browser:</p>
+        <div class="app-link-container">
+            <span>🔗 الرابط الرسمي للتطبيق (افتح عبر Pi Browser):</span>
             <a href="https://bmservices9567.pinet.com" target="_blank">https://bmservices9567.pinet.com</a>
         </div>
 
-        <p>استمتع بخدمات مصر الرقمية واشتراك الـ 3.14 Pi بلمسة واحدة.</p>
+        <p style="font-size: 18px;">الآن استمتع بخدمات مصر الرقمية ونظام الـ 3.14 Pi من أي جهاز بلمسة واحدة.</p>
 
-        <button class="action-btn" onclick="playSong()">🎵 تشغيل أغنية رمضان جانا 🎶</button>
+        <button class="action-btn" onclick="startExperience()">🎵 ابدأ التجربة واستمع للأغنية 🎶</button>
         
-        <audio id="ramadan-audio">
+        <audio id="ramadan-song">
             <source src="https://habib2000000.github.io/BM-Services/%D9%85%D8%AD%D9%85%D8%AF%20%D8%B9%D8%A8%D8%AF%20%D8%A7%D9%84%D9%85%D8%B7%D9%84%D8%A8%20_%20%D8%A3%D8%BA%D9%86%D9%8A%D8%A9%20%D8%B1%D9%85%D8%B6%D8%A7%D9%86%20%D8%AC%D8%A7%D9%86%D8%A7.mp3" type="audio/mpeg">
         </audio>
     </div>
 
     <footer>
-        تطوير: habib2000000 | جيش رواد PI network | 2026
+        تطوير: habib2000000 | bmservices9567.pinet.com | جيش رواد PI network
     </footer>
 
     <script>
-        function playSong() {
-            const audio = document.getElementById('ramadan-audio');
-            // التأكد من إعادة التحميل والتشغيل
-            audio.load();
-            audio.play().catch(function(error) {
-                alert("يرجى الضغط مرة أخرى أو السماح بتشغيل الصوت في المتصفح.");
-                console.log("Error: " + error);
+        function startExperience() {
+            const song = document.getElementById('ramadan-song');
+            // إعادة تحميل لضمان عمل الرابط المشفر
+            song.load(); 
+            song.play().then(() => {
+                alert("🌙 رمضان مبارك! استمتع بخدماتنا الشاملة.");
+            }).catch(error => {
+                alert("يرجى الضغط مرة أخرى أو السماح بتشغيل الصوت في متصفحك.");
+                console.error("Audio error:", error);
             });
         }
     </script>
