@@ -3,44 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة BM Services - واجهة الكمبيوتر</title>
+    <title>بوابة BM Services - الإصدار النهائي</title>
     <style>
-        :root { --bg: #1a1a40; --card: #242458; --gold: #ffc107; }
-        body { margin: 0; background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-        .lanterns { display: flex; gap: 60px; margin-top: 20px; }
+        :root {
+            --bg-purple: #1a1a40;
+            --card-purple: #242458;
+            --gold: #ffc107;
+        }
+        body {
+            margin: 0; padding: 0;
+            background: var(--bg-purple);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            color: white;
+            display: flex; flex-direction: column; align-items: center; min-height: 100vh;
+        }
+
+        /* زينة رمضان الراقصة */
+        .decoration { display: flex; gap: 50px; margin-top: 20px; }
         .lantern { font-size: 50px; animation: swing 3s infinite ease-in-out; transform-origin: top; }
-        @keyframes swing { 0%, 100% { transform: rotate(-10deg); } 50% { transform: rotate(10deg); } }
-        .container { background: var(--card); border-radius: 25px; padding: 40px; width: 85%; max-width: 950px; text-align: center; margin: 30px 0; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); }
-        .welcome-box { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; border-right: 8px solid var(--gold); margin-bottom: 30px; text-align: right; line-height: 1.8; }
-        .link-box { background: linear-gradient(135deg, var(--gold), #ffa000); color: #1a1a40; padding: 25px; border-radius: 20px; margin: 30px 0; font-weight: bold; box-shadow: 0 10px 30px rgba(255,193,7,0.4); }
-        .link-box a { color: #1a1a40; font-size: 22px; display: block; margin-top: 10px; word-break: break-all; font-weight: 900; }
-        .action-btn { background: var(--gold); color: #1a1a40; border: none; padding: 20px 60px; border-radius: 50px; font-size: 22px; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 25px rgba(255,193,7,0.4); }
+        @keyframes swing { 0%, 100% { transform: rotate(-12deg); } 50% { transform: rotate(12deg); } }
+
+        /* واجهة الكمبيوتر المحترفة */
+        .container {
+            background: var(--card-purple);
+            border-radius: 25px;
+            padding: 40px;
+            width: 85%;
+            max-width: 900px;
+            text-align: center;
+            margin: 30px 0;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* صندوق الترحيب الرمضاني */
+        .welcome-box { 
+            background: rgba(255,255,255,0.05); 
+            padding: 25px; 
+            border-radius: 20px; 
+            margin-bottom: 30px; 
+            border-right: 8px solid var(--gold);
+            text-align: right;
+        }
+
+        /* إبراز لينك التطبيق الرسمي */
+        .app-link-box {
+            background: linear-gradient(135deg, var(--gold), #ffa000);
+            color: #1a1a40;
+            padding: 25px;
+            border-radius: 20px;
+            margin: 30px 0;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(255, 193, 7, 0.4);
+        }
+        .app-link-box a {
+            color: #1a1a40;
+            text-decoration: underline;
+            font-size: 22px;
+            display: block;
+            margin-top: 10px;
+            word-break: break-all;
+        }
+
+        .action-btn {
+            background: var(--gold);
+            color: var(--bg-purple);
+            border: none;
+            padding: 20px 50px;
+            border-radius: 60px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(255, 193, 7, 0.4);
+            transition: 0.3s;
+        }
         .action-btn:hover { background: white; transform: scale(1.05); }
+
+        footer { margin-top: auto; padding: 25px; opacity: 0.7; font-size: 14px; }
     </style>
 </head>
 <body>
-    <div class="lanterns"><div class="lantern">🏮</div><div class="lantern">🏮</div></div>
+
+    <div class="decoration">
+        <div class="lantern">🏮</div>
+        <div class="lantern">🏮</div>
+    </div>
+
     <div class="container">
         <div class="welcome-box">
-            <h2 style="color: var(--gold); margin-top: 0;">🌙 رمضان كريم وكل عام وأنتم بخير</h2>
+            <h2 style="color: var(--gold);">🌙 رمضان كريم وكل عام وأنتم بخير</h2>
             <p>يرحب تطبيق <strong>BM Services</strong> بجميع الرواد بمناسبة حلول شهر رمضان المبارك، أعاده الله علينا وعليكم بالخير واليمن والبركات.</p>
         </div>
-        <div class="link-box">
+
+        <div class="app-link-box">
             <span>🔗 الرابط الرسمي للتطبيق (افتح عبر Pi Browser لخدمات الدفع):</span>
             <a href="https://bmservices9567.pinet.com" target="_blank">https://bmservices9567.pinet.com</a>
         </div>
-        <button class="action-btn" onclick="startApp()">🎵 ابدأ التجربة واستمع للأغنية 🎶</button>
-        <audio id="ramadan-audio" preload="auto">
-            <source src="https://habib2000000.github.io/BM-Services/%D9%85%D8%AD%D9%85%D8%AF%20%D8%B9%D8%A8%D8%AF%20%D8%A7%D9%84%D9%85%D8%B7%D9%84%D8%A8%20_%20%D8%A3%D8%BA%D9%86%D9%8A%D8%A9%20%D8%B1%D9%85%D8%B6%D8%A7%D9%86%20%D8%AC%D8%A7%D9%86%D8%A7.mp3" type="audio/mpeg">
+
+        <p style="font-size: 18px; margin-bottom: 25px;">استمتع بخدمات مصر الرقمية ونظام الـ 3.14 Pi بلمسة واحدة من أي جهاز.</p>
+
+        <button class="action-btn" onclick="startExperience()">🎵 ابدأ التجربة واستمع للأغنية 🎶</button>
+        
+        <audio id="ramadan-song">
+            <source src="Welcome%20Ramadan.mp3.mp3" type="audio/mpeg">
         </audio>
     </div>
+
+    <footer>
+        تطوير: habib2000000 | جيش رواد PI network | 2026
+    </footer>
+
     <script>
-        function startApp() {
-            const audio = document.getElementById('ramadan-audio');
-            audio.play().then(() => {
-                console.log("Playing...");
-            }).catch(err => {
-                alert("برجاء الضغط مرة أخرى لتفعيل الصوت في متصفحك.");
+        function startExperience() {
+            const song = document.getElementById('ramadan-song');
+            song.load(); // لضمان تحميل الملف الجديد
+            song.play().then(() => {
+                alert("🌙 رمضان مبارك! تم تفعيل اشتراك الـ 3.14 Pi بنجاح.");
+            }).catch(error => {
+                alert("يرجى الضغط مرة أخرى أو السماح بتشغيل الصوت في المتصفح.");
+                console.error("Audio error:", error);
             });
         }
     </script>
