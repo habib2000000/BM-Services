@@ -3,153 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BM Services - بوابة رواد Pi الشاملة</title>
+    <title>BM Services - بوابة رمضان الرقمية</title>
     <style>
-        :root {
-            --primary-blue: #1a237e;
-            --pi-gold: #ffa000;
-            --danger-red: #d32f2f;
-            --ramadan-light: #fff9c4;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
-            overflow-x: hidden;
-        }
-        /* تصميم الحماية (شاشة الكمبيوتر) */
-        #desktop-blocker {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--primary-blue);
+        :root { --primary-blue: #1a237e; --pi-gold: #ffa000; --ramadan-gold: #ffd700; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; text-align: center; }
+        
+        /* الهيدر الرمضاني مع الفوانيس الراقصة */
+        .ramadan-header {
+            background: linear-gradient(135deg, var(--primary-blue), #283593);
             color: white;
-            z-index: 10000;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        /* زينة رمضان الراقصة */
-        .ramadan-banner {
-            background: linear-gradient(45deg, var(--primary-blue), #283593);
-            color: white;
-            padding: 20px;
-            text-align: center;
+            padding: 30px 20px;
             position: relative;
         }
         .lantern {
-            font-size: 30px;
+            font-size: 35px;
             display: inline-block;
             animation: swing 3s infinite ease-in-out;
             transform-origin: top;
+            margin: 0 15px;
         }
-        @keyframes swing {
-            0%, 100% { transform: rotate(-10deg); }
-            50% { transform: rotate(10deg); }
-        }
-        /* بطاقات الخدمات */
-        .card {
-            background: white;
-            margin: 15px;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            margin-top: 10px;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .btn-pi { background: var(--pi-gold); color: white; }
-        .btn-gov { background: #e3f2fd; color: var(--primary-blue); border: 1px solid var(--primary-blue); }
-        .btn-emergency { background: var(--danger-red); color: white; }
+        @keyframes swing { 0%, 100% { transform: rotate(-15deg); } 50% { transform: rotate(15deg); } }
         
-        .timer { font-size: 14px; color: #2e7d32; margin-top: 5px; }
+        /* الهلال النابض */
+        .moon { font-size: 40px; animation: pulse 2s infinite; display: block; margin-top: 10px; }
+        @keyframes pulse { 0% { opacity: 0.7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.1); } 100% { opacity: 0.7; transform: scale(1); } }
+
+        .card { background: white; margin: 15px; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn-pi { background: var(--pi-gold); color: white; border: none; padding: 12px; border-radius: 25px; width: 100%; font-weight: bold; cursor: pointer; text-decoration: none; display: block; }
     </style>
 </head>
 <body>
 
-    <div id="desktop-blocker">
-        <h1 style="font-size: 80px;">🚫</h1>
-        <h2>تطبيق BM Services للموبايل فقط</h2>
-        <p>عذراً يا بطل، لا يمكن فتح "دستور التطبيق" من الكمبيوتر لضمان الأمان.</p>
-        <p>تطوير: habib2000000 | جيش رواد PI network</p>
+    <header class="ramadan-header">
+        <div class="lantern">🏮</div>
+        <span class="moon">🌙</span>
+        <h1>BM Services</h1>
+        <p>كل عام وحضراتكم بخير بمناسبة شهر رمضان المبارك 🌙✨</p>
+        <div class="lantern">🏮</div>
+    </header>
+
+    <div class="card">
+        <h4>🎵 استمع لنفحات رمضان</h4>
+        <audio id="ramadan-audio" controls style="width: 100%;">
+            <source src="https://habib2000000.github.io/BM-Services/محمد عبد المطلب _ أغنية رمضان جانا.mp3" type="audio/mpeg">
+            متصفحك لا يدعم تشغيل الأغنية.
+        </audio>
     </div>
 
-    <div id="app-main">
-        <header class="ramadan-banner">
-            <span class="lantern">🏮</span>
-            <h1>BM Services</h1>
-            <p id="welcome-msg">رمضان كريم وكل عام وحضراتكم بخير 🌙</p>
-            <span class="lantern">🏮</span>
-        </header>
-
-        <div class="card">
-            <h3>باقة الرواد المميزة (30 يوم)</h3>
-            <p>قيمة الاشتراك: <strong>3.14 Pi</strong></p>
-            <div id="expiry-status" class="timer">الحالة: في انتظار التفعيل</div>
-            <button class="btn btn-pi" onclick="startPayment()">تفعيل الاشتراك / تجديد</button>
-        </div>
-
-        <h2 style="padding: 0 15px;">🏛️ خدمات الوزارات المصرية</h2>
-        <div class="card">
-            <h4>استخراج بطاقة رقم قومي</h4>
-            <p style="font-size: 13px; color: #666;">نبذة: يتطلب أصل البطاقة القديمة وشهادة ميلاد.</p>
-            <a href="https://digital.gov.eg/" class="btn btn-gov" target="_blank">الانتقال لمنصة مصر الرقمية</a>
-        </div>
-
-        <h2 style="padding: 0 15px;">📞 أرقام تهمك (اتصال سريع)</h2>
-        <div style="display: flex; gap: 10px; padding: 0 15px;">
-            <a href="tel:123" class="btn btn-emergency" style="flex:1;">الإسعاف 123</a>
-            <a href="tel:122" class="btn btn-emergency" style="flex:1;">النجدة 122</a>
-        </div>
-
-        <footer style="text-align: center; padding: 30px; color: #888; font-size: 12px;">
-            جميع الحقوق محفوظة © 2026 | BM Services <br>
-            مخصص للفتح عبر Pi Browser: bmservices9567.pinet.com
-        </footer>
+    <div class="card">
+        <h3>باقة الرواد (3.14 Pi)</h3>
+        <p>استمتع بخدمات الوزارات والأرقام الهامة لمدة 30 يوم.</p>
+        <a href="https://bmservices9567.pinet.com" class="btn-pi">دخول التطبيق عبر Pi Browser</a>
     </div>
 
     <script>
-        function initApp() {
+        function checkAndGreet() {
             const ua = navigator.userAgent;
             const isMobile = /Android|iPhone|iPad|iPod/i.test(ua);
-            const isPiBrowser = ua.includes("PiBrowser");
 
-            // 1. فحص الجهاز (منع الكمبيوتر)
+            // 1. منع الكمبيوتر وحماية الدستور
             if (!isMobile) {
-                document.getElementById('desktop-blocker').style.display = 'flex';
-                document.getElementById('app-main').style.display = 'none';
+                document.body.innerHTML = "<h2 style='padding:50px;'>🚫 عذراً.. تطبيق BM Services مخصص للموبايل فقط لضمان الأمان.</h2>";
                 return;
             }
 
-            // 2. تنبيه لمتصفح Pi
-            if (!isPiBrowser) {
-                alert("تنبيه: يرجى فتح التطبيق من Pi Browser لضمان عمل نظام مدفوعات الـ 3.14 Pi.");
-            }
-
-            // 3. رسالة الترحيب الرمضانية
+            // 2. رسالة الترحيب والتهنئة
             setTimeout(() => {
-                alert("مرحباً بك في BM Services! 🌙\nرمضان مبارك على كل زوارنا وجيش رواد Pi Network.");
+                alert("🌙 رمضان كريم! \nيرحب تطبيق BM Services بكل زوارنا الكرام ورواد جيش Pi Network.");
+                // تشغيل الأغنية تلقائياً إذا سمح المتصفح
+                document.getElementById('ramadan-audio').play().catch(() => console.log("التشغيل التلقائي يتطلب تفاعل المستخدم أولاً."));
             }, 1000);
         }
 
-        function startPayment() {
-            alert("سيتم الآن توجيهك لمحفظة Pi لدفع اشتراك الشهر (3.14 Pi)");
-            // ربط الـ Pi SDK الفعلي يتم هنا
-        }
-
-        window.onload = initApp;
+        window.onload = checkAndGreet;
     </script>
 </body>
 </html>
