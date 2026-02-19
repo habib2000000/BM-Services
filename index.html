@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BM Manager Market - بوابة الخدمات</title>
+    <title>BM Services - النسخة الشاملة</title>
     <style>
         :root {
-            --bg-purple: #311b92; /* لون الخلفية الملكي من الصورة */
-            --gold-btn: #ffc107; /* اللون الأصفر للزر */
-            --glass-bg: rgba(255, 255, 255, 0.1);
+            --bg-purple: #311b92; /* لون BM Manager Market الأصلي */
+            --glass-card: rgba(255, 255, 255, 0.12);
+            --gold-accent: #ffc107;
         }
         body {
             margin: 0; padding: 0;
@@ -16,97 +16,107 @@
             font-family: 'Segoe UI', Tahoma, sans-serif;
             color: white;
             display: flex; flex-direction: column; align-items: center; min-height: 100vh;
+            overflow: hidden;
         }
-        /* زينة رمضان المتحركة */
-        .lanterns-top { display: flex; justify-content: center; gap: 30px; margin-top: 50px; }
-        .lantern { font-size: 40px; animation: swing 3s infinite ease-in-out; transform-origin: top; }
-        @keyframes swing { 0%, 100% { transform: rotate(-15deg); } 50% { transform: rotate(15deg); } }
+        /* زينة رمضان الراقصة */
+        .lanterns { display: flex; gap: 40px; margin-top: 40px; }
+        .lantern { font-size: 45px; animation: swing 3s infinite ease-in-out; transform-origin: top; }
+        @keyframes swing { 0%, 100% { transform: rotate(-12deg); } 50% { transform: rotate(12deg); } }
 
-        /* البطاقة المركزية (مثل واجهة الماركت) */
+        /* البطاقة الاحترافية (Glassmorphism) */
         .market-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 40px 20px;
-            width: 85%; max-width: 400px;
-            text-align: center;
+            background: var(--glass-card);
+            backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            margin-top: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border-radius: 35px;
+            padding: 50px 25px;
+            width: 85%; max-width: 380px;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
         }
-        .title { font-size: 22px; font-weight: bold; margin: 20px 0; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .subtitle { font-size: 14px; opacity: 0.8; margin-bottom: 30px; }
+        .app-title { font-size: 24px; font-weight: bold; color: var(--gold-accent); margin-bottom: 10px; }
+        .description { font-size: 14px; line-height: 1.6; opacity: 0.9; margin-bottom: 35px; }
 
-        /* الزر التفاعلي */
-        .start-btn {
-            background: var(--gold-btn);
-            color: #311b92;
+        /* الزر التفاعلي الذهبي */
+        .btn-start {
+            background: var(--gold-accent);
+            color: var(--bg-purple);
             border: none;
-            padding: 15px 30px;
+            padding: 18px 40px;
             border-radius: 50px;
-            font-size: 16px;
+            font-size: 17px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            text-decoration: none; display: inline-block;
-            transition: transform 0.3s;
+            box-shadow: 0 8px 20px rgba(255, 193, 7, 0.3);
+            transition: 0.3s;
         }
-        .start-btn:active { transform: scale(0.95); }
+        .btn-start:active { transform: scale(0.92); }
 
-        /* الحماية من الكمبيوتر */
-        #desktop-block { display: none; position: fixed; inset: 0; background: var(--bg-purple); z-index: 9999; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+        /* شاشة حماية الموبايل (Desktop Blocker) */
+        #mobile-only {
+            display: none; position: fixed; inset: 0; background: var(--bg-purple);
+            z-index: 9999; justify-content: center; align-items: center;
+            text-align: center; padding: 30px;
+        }
     </style>
 </head>
 <body>
 
-    <div id="desktop-block">
-        <h2>🚫 عذراً يا بطل!</h2>
-        <p>تطبيق BM Services متاح فقط عبر الموبايل لحماية خصوصية رواد Pi.</p>
+    <div id="mobile-only">
+        <h2 style="font-size: 40px;">🚫</h2>
+        <h3>تطبيق BM Services متاح فقط عبر الموبايل</h3>
+        <p>عذراً يا بطل! تم غلق الدخول من الكمبيوتر لحماية خصوصية بياناتك.</p>
     </div>
 
-    <div class="lanterns-top">
+    <div class="lanterns">
         <div class="lantern">🏮</div>
         <div class="lantern">🏮</div>
     </div>
 
     <div class="market-card">
-        <div class="title">🌙 بوابة BM Services 🌙</div>
-        <div class="subtitle">استعد لأجواء رمضان 2026 مع رواد شبكة Pi <br> خدمات حكومية | اشتراك 3.14 Pi | أمان تام</div>
+        <span style="font-size:30px;">🌙</span>
+        <div class="app-title">بوابة BM Services</div>
+        <p class="description">
+            خدمات مصر الرقمية بلمسة ذكية <br> 
+            اشتراك شهري: 3.14 Pi <br> 
+            أمان شامل وحماية متطورة
+        </p>
         
-        <button class="start-btn" onclick="openApp()">🎶 ابدأ التجربة واستلم الترحيب 🚀</button>
+        <button class="btn-start" onclick="launchExperience()">🚀 ابدأ التجربة واستلم الترحيب 🎶</button>
         
-        <audio id="ramadan-song" preload="auto">
+        <audio id="ramadan-track">
             <source src="https://habib2000000.github.io/BM-Services/محمد عبد المطلب _ أغنية رمضان جانا.mp3" type="audio/mpeg">
         </audio>
     </div>
 
-    <footer style="margin-top: auto; padding: 20px; font-size: 11px; opacity: 0.6;">
-        تم التطوير بواسطة habib2000000 | bmservices9567.pinet.com
+    <footer style="margin-top: auto; padding-bottom: 20px; font-size: 11px; opacity: 0.5;">
+        تطوير: habib2000000 | bmservices9567.pinet.com
     </footer>
 
     <script>
-        function checkSecurity() {
-            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        function securityCheck() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             if (!isMobile) {
-                document.getElementById('desktop-block').style.display = 'flex';
+                document.getElementById('mobile-only').style.display = 'flex';
             }
         }
 
-        function openApp() {
-            // تشغيل الأغنية الرمضانية
-            const audio = document.getElementById('ramadan-song');
-            audio.play().catch(e => console.log("Audio needs interaction first"));
+        function launchExperience() {
+            // 1. تشغيل الأغنية الرمضانية "رمضان جانا"
+            const song = document.getElementById('ramadan-track');
+            song.play().catch(() => console.log("تطلب تفاعل المستخدم"));
 
-            // الترحيب الذكي
-            alert("🌙 رمضان كريم! \n تم تفعيل نظام الـ 3.14 Pi بنجاح. \n جاري توجيهك لخدمات مصر الرقمية.");
+            // 2. رسالة الترحيب والتهنئة
+            alert("🌙 رمضان كريم! \n\n نرحب بك في النسخة المطورة من BM Services. \n تم تفعيل باقة الـ 3.14 Pi بنجاح.");
             
-            // التوجيه للينك التطبيق الرسمي
+            // 3. التوجيه للينك التطبيق الرسمي
             setTimeout(() => {
                 window.location.href = "https://bmservices9567.pinet.com";
-            }, 2000);
+            }, 1800);
         }
 
-        window.onload = checkSecurity;
+        window.onload = securityCheck;
     </script>
 </body>
 </html>
